@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Loan Eligibility Checker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>AI Loan Eligibility Checker</h1>
+            <p>Check your loan eligibility, EMI and get financial insights.</p>
+        </header>
+
+
+        <main class="card">
+
+            <h2>Applicant Details</h2>
+
+
+            <form id="loanForm">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Age</label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        placeholder="Enter your age"
+                        min="18"
+                        max="70"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Monthly Income (₹)</label>
+
+                    <input
+                        type="number"
+                        id="income"
+                        placeholder="e.g. 50000"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Credit Score</label>
+
+                    <input
+                        type="number"
+                        id="creditScore"
+                        placeholder="300 - 900"
+                        min="300"
+                        max="900"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Employment Type</label>
+
+                    <select id="employment" required>
+
+                        <option value="">
+                            Select employment type
+                        </option>
+
+                        <option value="Salaried">
+                            Salaried
+                        </option>
+
+                        <option value="Self Employed">
+                            Self Employed
+                        </option>
+
+                        <option value="Business">
+                            Business
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+                    <label>Loan Amount (₹)</label>
+
+                    <input
+                        type="number"
+                        id="loanAmount"
+                        placeholder="e.g. 500000"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Loan Tenure (Years)</label>
+
+                    <input
+                        type="number"
+                        id="tenure"
+                        placeholder="e.g. 5"
+                        min="1"
+                        max="30"
+                        required
+                    >
+                </div>
+
+
+                <button type="submit">
+                    Check Eligibility
+                </button>
+
+            </form>
+
+
+            <!-- RESULT SECTION -->
+
+            <div id="result" class="result hidden">
+
+                <h2>Loan Assessment</h2>
+
+
+                <!-- Eligibility -->
+
+                <div class="status-card">
+
+                    <span>
+                        Eligibility Status
+                    </span>
+
+                    <strong id="eligibility">
+                    </strong>
+
+                </div>
+
+
+                <!-- Statistics -->
+
+                <div class="stats">
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Monthly EMI
+                        </span>
+
+                        <strong id="emi">
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Credit Score
+                        </span>
+
+                        <strong id="creditDisplay">
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Employment
+                        </span>
+
+                        <strong id="employmentDisplay">
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Assessment -->
+
+                <div class="message-card">
+
+                    <h3>
+                        📋 Assessment
+                    </h3>
+
+                    <p id="message">
+                    </p>
+
+                </div>
+
+
+                <!-- Financial Tips -->
+
+                <div class="tips-card">
+
+                    <h3>
+                        💡 Financial Tips
+                    </h3>
+
+                    <div id="tips">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <footer>
+
+            <p>
+                AI Loan Eligibility Checker © 2026
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

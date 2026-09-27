@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loan Applications</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Loan Applications</h1>
+            <p>View submitted loan applications.</p>
+        </header>
+
+        <main class="card">
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Income</th>
+                            <th>Credit Score</th>
+                            <th>Employment</th>
+                            <th>Loan Amount</th>
+                            <th>Tenure</th>
+                            <th>EMI</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="applicationsTable">
+
+                        <tr>
+                            <td colspan="10">
+                                Loading applications...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+        <footer>
+            <p>AI Loan Eligibility Checker © 2026</p>
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        async function loadApplications() {
+
+            const table =
+                document.getElementById("applicationsTable");
+
+            try {
+
+                const response = await fetch(
+                    "http://127.0.0.1:5000/api/applications"
+                );
+
+                const applications =
+                    await response.json();
+
+
+                if (applications.length === 0) {
+
+                    table.innerHTML = `
+                        <tr>
+                            <td colspan="10">
+                                No applications found.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                table.innerHTML = "";
+
+
+                applications.forEach(app => {
+
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+
+                        <td>${app.id}</td>
+
+                        <td>${app.name}</td>
+
+                        <td>${app.age}</td>
+
+                        <td>
+                            ₹${Number(app.income)
+                                .toLocaleString("en-IN")}
+                        </td>
+
+                        <td>
+                            ${app.credit_score}
+                        </td>
+
+                        <td>
+                            ${app.employment}
+                        </td>
+
+                        <td>
+                            ₹${Number(app.loan_amount)
+                                .toLocaleString("en-IN")}
+                        </td>
+
+                        <td>
+                            ${app.tenure} Years
+                        </td>
+
+                        <td>
+                            ₹${Number(app.emi)
+                                .toLocaleString("en-IN")}
+                        </td>
+
+                        <td>
+                            ${
+                                app.eligible
+                                ? "✅ Eligible"
+                                : "❌ Not Eligible"
+                            }
+                        </td>
+
+                    `;
+
+                    table.appendChild(row);
+
+                });
+
+
+            } catch (error) {
+
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="10">
+                            ⚠️ Unable to load applications.
+                        </td>
+                    </tr>
+                `;
+
+                console.error(error);
+
+            }
+
+        }
+
+
+        loadApplications();
+
+    </script>
+
+</body>
+
+</html>
