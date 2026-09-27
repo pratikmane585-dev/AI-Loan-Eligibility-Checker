@@ -255,9 +255,8 @@ def get_applications():
 # -------------------------
 
 if __name__ == "__main__":
-
     init_db()
 
     print("AI Loan Eligibility Checker Backend Started 🚀")
 
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
