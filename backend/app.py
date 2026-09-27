@@ -254,9 +254,16 @@ def get_applications():
 # Start Server
 # -------------------------
 
+# Initialize database when the application starts
+init_db()
+
+
 if __name__ == "__main__":
-    init_db()
 
     print("AI Loan Eligibility Checker Backend Started 🚀")
 
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=True
+    )
